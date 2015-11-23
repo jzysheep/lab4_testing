@@ -41,6 +41,23 @@ public class RationalTest extends TestCase {
         assertTrue( sRoot.isLessThan( HALF.plus( Rational.getTolerance() ) ) 
                         && HALF.minus( Rational.getTolerance() ).isLessThan( sRoot ) );
     }
+
+    public void testDenominatorEqual0()
+    {    
+        try
+        {
+        Rational x = new Rational (1,0);
+        Rational y = new Rational (3,4);
+        Rational z = x.plus(y); 
+        fail("Fail: should throw exception on denominator = 0.");
+        }
+        catch(Exception ex)
+        {
+            assertTrue(true);
+        }
+    }
+
+
 // fail
     public void testPlus() {
         Rational a = new Rational (-1,-2);
@@ -88,13 +105,22 @@ public class RationalTest extends TestCase {
 
     }
 
-    public void testAbs() {
+    public void testAbs1() {
         Rational a = new Rational(-1, -2);
         Rational c = a.abs();
         System.out.println("Abs of -1/-2 is "+ c.toString());
         assertEquals(c.numerator(), 1);
         assertEquals(c.denominator(), 2);
 
+    }
+
+    public static void testAbs2()
+    {
+        Rational x = new Rational (1,-2);
+        Rational z = x.abs();
+        System.out.println("Abs of 1/-2 is "+ z.toString());
+        assertEquals(z.numerator(), 1);
+        assertEquals(z.denominator(), 2);
     }
 
     public void testTolerance() {
@@ -109,6 +135,23 @@ public class RationalTest extends TestCase {
         Rational a = new Rational(1, 300);
         assertEquals("1/300", a.toString());
     }
+
+    public static void testIllegalArgumentToSquareRootException()
+    {
+        Rational s = new Rational( 1, Integer.MAX_VALUE );
+        Rational sRoot = null;
+        try {
+            sRoot = s.root();
+            fail("Fail: should throw IllegalArgumentToSquareRootException.");
+        } catch (IllegalArgumentToSquareRootException e) {
+            assertTrue(true);
+        }
+        catch(Exception e)
+        {
+            assertTrue(false);
+        }
+    }
+
     public static void main(String args[]) {
         String[] testCaseName = 
             { RationalTest.class.getName() };
