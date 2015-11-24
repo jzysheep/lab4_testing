@@ -97,7 +97,7 @@ public class RationalTest extends TestCase {
     public void testDivides() {
         Rational a = new Rational(3, 4);
         Rational b = new Rational(2, 7);
-        Rational c = a.times(b);
+        Rational c = a.divides(b);
 
         System.out.println("Test divides 3/4 / 2/7 = " + c.toString());
         assertEquals(c.numerator(), 21);
