@@ -1,0 +1,9 @@
+Ziyangs-MacBook-Pro:lab4 ziyangjiang$ javac -cp .:./libs/* TestMp3Player.java Mp3Player.java MockMp3Player.java 
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Ziyangs-MacBook-Pro:lab4 ziyangjiang$ java -cp .:./libs/* org.junit.runner.JUnitCore TestMp3Player
+JUnit version 4.11
+...
+Time: 0.005
+
+OK (3 tests)
